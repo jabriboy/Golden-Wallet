@@ -7,7 +7,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import com.senaicimatec.golden_wallet.db.DB;
+
+import com.senaicimatec.golden_wallet.db.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,29 +17,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        * Mudar as properties do arquivo de texto db.properties para o banco correto
-        * */
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
+        Connection connection = null;
         try {
-            conn = DB.getConnection();  // cria a conexão com o banco
-            st = conn.createStatement(); // instancia um objeto de Statement
-            rs = st.executeQuery("select * from departamento");  //permite entrar com a string que representa o comando SQL
-            while (rs.next()) {    // enquanto tiver linhas na tabela o laço será executado
-                System.out.println (rs.getInt("id") + " - "+rs.getString("nome"));
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            // fecha os recursos abertos
-            DB.closeResultSet(rs);
-            DB.closeStatement(st);
+            connection = DatabaseHelper.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select nome_conta from tb_conta");
 
-            DB.closeConnection();
+            while (resultSet.next()) {
+                String nome = resultSet.getString("nome_conta");
+                System.out.println(nome);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
