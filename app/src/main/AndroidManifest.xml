@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Goldenwallet"
         tools:targetApi="31">
         <activity
+            android:name=".Gasto"
+            android:exported="false" />
+        <activity
+            android:name=".Renda"
+            android:exported="false" />
+        <activity
             android:name=".MainPage"
             android:exported="false" />
         <activity

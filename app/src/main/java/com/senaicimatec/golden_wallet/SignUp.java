@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
                         Statement statement = connection.createStatement();
                         ResultSet resultSet = statement.executeQuery("inserir");
 
-
+                        // ir para MainPage
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -58,10 +58,10 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        // função para voltar a MainActivity
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // função para voltar a MainActivity
 
             }
         });
