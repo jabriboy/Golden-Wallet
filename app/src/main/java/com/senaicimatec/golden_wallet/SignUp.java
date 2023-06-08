@@ -1,22 +1,31 @@
 package com.senaicimatec.golden_wallet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.senaicimatec.golden_wallet.db.DatabaseHelper;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.senaicimatec.golden_wallet.Entities.User;
+import com.senaicimatec.golden_wallet.db.DataInsertionHelper;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.Objects;
+
 
 public class SignUp extends AppCompatActivity {
 
+    DataInsertionHelper di = new DataInsertionHelper();
+
+    ArrayList<User> ids = new ArrayList<User>();
     private EditText editNome;
     private EditText editPassword1;
     private EditText editPassword2;
@@ -27,6 +36,8 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
         editNome = (EditText) findViewById(R.id.editNome);
         editPassword1 = (EditText) findViewById(R.id.editPassword1);
         editPassword2 = (EditText) findViewById(R.id.editPassword2);
@@ -35,27 +46,35 @@ public class SignUp extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*String nome = editNome.getText().toString();
+
+                String nome = editNome.getText().toString();
                 String paswd1 = editPassword1.getText().toString();
                 String paswd2 = editPassword2.getText().toString();
 
-                if(paswd1.equals(paswd2)){
-                    Connection connection = null;
-                    try {
-                        connection = DatabaseHelper.getConnection();
-                        Statement statement = connection.createStatement();
-                        ResultSet resultSet = statement.executeQuery("inserir");
+                int last_id = ids.get(-1).getId();
 
-                        // ir para MainPage
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                di.inserirUsuario(new User(last_id + 1, nome, paswd1));
+
+            }
+        });
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int id = 0;
+                for (DataSnapshot current_user : snapshot.child("Usuarios").getChildren()) {
+                    id = Integer.parseInt(Objects.requireNonNull(current_user.getKey()));
+                    String username = Objects.requireNonNull(current_user.child(current_user.getKey()).child("username").getValue()).toString();
+                    String password = Objects.requireNonNull(current_user.child(current_user.getKey()).child("password").getValue()).toString();
+                    User u = new User(id, username, password);
+                    ids.add(u);
                 }
-                else{
-                    System.out.println("senhas não são iguais");
-                }*/
-                Intent i = new Intent(SignUp.this,MainPage.class);
-                startActivity(i);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

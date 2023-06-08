@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Renda">
 
-    <View
-        android:id="@+id/divider6"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="324dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5" />
-
     <ProgressBar
         android:id="@+id/progressBarGastoEspecifica"
         style="?android:attr/progressBarStyle"
@@ -24,10 +13,8 @@
         android:layout_height="108dp"
         android:layout_marginTop="76dp"
         android:layout_marginEnd="52dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <TextView
         android:id="@+id/gastoEspecifica2"
@@ -205,39 +192,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCategoriaEscolhida" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider6" />
-
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroupCategorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="547dp">
 
 
         <com.google.android.material.chip.Chip
             android:id="@+id/categoria1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ola"
-            />
-        <com.google.android.material.chip.Chip
-            android:id="@+id/categoria2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ola"
-            />
+            android:text="Categoria 1" />
     </com.google.android.material.chip.ChipGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

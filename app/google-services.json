@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "437383503086",
+    "firebase_url": "https://golden-wallet-4f9f1-default-rtdb.firebaseio.com",
+    "project_id": "golden-wallet-4f9f1",
+    "storage_bucket": "golden-wallet-4f9f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437383503086:android:bbadc95096a253c3ed27ff",
+        "android_client_info": {
+          "package_name": "com.senaicimatec.golden_wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437383503086-tqcs9vto8nh61kidav92vtit8fcffrji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.senaicimatec.golden_wallet",
+            "certificate_hash": "c52b9aaf467b9bb8f347c560a1b1aa0dbf556111"
+          }
+        },
+        {
+          "client_id": "437383503086-bp2nmmr3tdigaad5vnj95mdqun4un7et.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM_HIdlXYPSaT6Hf3sKPn2QfgbWW4iXCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437383503086-bp2nmmr3tdigaad5vnj95mdqun4un7et.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
