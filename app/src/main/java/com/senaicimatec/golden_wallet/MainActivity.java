@@ -2,6 +2,7 @@ package com.senaicimatec.golden_wallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 String username = editUsername.getText().toString();
                 String password = editPassword.getText().toString();
 
-                Connection connection = null;
+                /*Connection connection = null;
                 try {
                     connection = DatabaseHelper.getConnection();
                     Statement statement = connection.createStatement();
@@ -64,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                             if(Objects.equals(password_bd, password)){
 
                                 System.out.println("Login feito com sucesso");
-                                // ir para próxima página
+                                Intent i = new Intent(MainActivity.this,MainPage.class);
+                                startActivity(i);
                             }
                         }
                     }
@@ -73,14 +75,17 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                System.out.println("Usuário ou senha errado");
+                System.out.println("Usuário ou senha errado");*/
+                Intent i = new Intent(MainActivity.this,MainPage.class);
+                startActivity(i);
             }
         });
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ir para a página de signup
+                Intent i = new Intent(MainActivity.this,SignUp.class);
+                startActivity(i);
             }
         });
 

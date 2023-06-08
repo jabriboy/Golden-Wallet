@@ -2,6 +2,7 @@ package com.senaicimatec.golden_wallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,6 @@ public class SignUp extends AppCompatActivity {
     private EditText editPassword1;
     private EditText editPassword2;
     private Button btnSubmit;
-    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +31,11 @@ public class SignUp extends AppCompatActivity {
         editPassword1 = (EditText) findViewById(R.id.editPassword1);
         editPassword2 = (EditText) findViewById(R.id.editPassword2);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        btnBack = (Button) findViewById(R.id.btnBack);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nome = editNome.getText().toString();
+                /*String nome = editNome.getText().toString();
                 String paswd1 = editPassword1.getText().toString();
                 String paswd2 = editPassword2.getText().toString();
 
@@ -54,16 +53,11 @@ public class SignUp extends AppCompatActivity {
                 }
                 else{
                     System.out.println("senhas não são iguais");
-                }
+                }*/
+                Intent i = new Intent(SignUp.this,MainPage.class);
+                startActivity(i);
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // função para voltar a MainActivity
-
-            }
-        });
     }
 }
