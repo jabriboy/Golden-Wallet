@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnSignup = (Button) findViewById(R.id.btnSignup);
 
-        Connection connection = null;
+        /*Connection connection = null;
         try {
             connection = DatabaseHelper.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select nome_conta from tb_conta");
+            ResultSet resultSet = statement.executeQuery("select (...)");
 
             while (resultSet.next()) {
                 String nome = resultSet.getString("nome_conta");
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     connection = DatabaseHelper.getConnection();
                     Statement statement = connection.createStatement();
-                    ResultSet resultSet = statement.executeQuery("Select user, password form tb_usuario");
+                    ResultSet resultSet = statement.executeQuery("Select user, password form usuario");
 
                     while (resultSet.next()) {
                         String user = resultSet.getString("user");

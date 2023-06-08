@@ -97,16 +97,6 @@
             android:layout_height="wrap_content" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <com.google.android.material.chip.Chip
             android:id="@+id/chipAddCategoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

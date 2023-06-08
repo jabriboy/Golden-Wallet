@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseHelper {
-    private static final String URL = "jdbc:mysql://localhoast:3306/Golden-Wallet";
+    private static final String URL = "jdbc:mysql://localhoast:3306/golden-wallet-android";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "1505";
 
