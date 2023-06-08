@@ -52,16 +52,18 @@ public class MainActivity extends AppCompatActivity {
                 String username = editUsername.getText().toString();
                 String password = editPassword.getText().toString();
 
-                /*Connection connection = null;
+                Connection connection = null;
                 try {
                     connection = DatabaseHelper.getConnection();
                     Statement statement = connection.createStatement();
-                    ResultSet resultSet = statement.executeQuery("Select user, password form usuario");
+                    ResultSet resultSet = statement.executeQuery("Select username, password form usuario");
 
                     while (resultSet.next()) {
-                        String user = resultSet.getString("user");
+                        String user = resultSet.getString("username");
+                        System.out.println(user);
                         if(Objects.equals(user, username)){
                             String password_bd = resultSet.getString("password");
+                            System.out.println(password_bd);
                             if(Objects.equals(password_bd, password)){
 
                                 System.out.println("Login feito com sucesso");
@@ -73,11 +75,18 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
+                } finally {
+                    if (connection != null) {
+                        try {
+                            connection.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
 
-                System.out.println("Usuário ou senha errado");*/
-                Intent i = new Intent(MainActivity.this,MainPage.class);
-                startActivity(i);
+                System.out.println("Usuário ou senha errado");
+
             }
         });
 

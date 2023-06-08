@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.senaicimatec.golden_wallet.db.DatabaseHelper;
+import com.senaicimatec.golden_wallet.db.DataInsertionHelper;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,27 +36,35 @@ public class SignUp extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*String nome = editNome.getText().toString();
+                String nome = editNome.getText().toString();
                 String paswd1 = editPassword1.getText().toString();
                 String paswd2 = editPassword2.getText().toString();
 
-                if(paswd1.equals(paswd2)){
-                    Connection connection = null;
+                Connection connection = null;
+                int unique = 0;
+
+                if(paswd1.equals(paswd2)) {
                     try {
                         connection = DatabaseHelper.getConnection();
                         Statement statement = connection.createStatement();
-                        ResultSet resultSet = statement.executeQuery("inserir");
+                        ResultSet resultSet = statement.executeQuery("Select username form usuario");
 
-                        // ir para MainPage
+                        while(resultSet.next()){
+                            String user = resultSet.getString("username");
+                            if(nome.equals(user)){
+                                System.out.println("usuário ja cadastrado");
+                                unique = 1;
+                                break;
+                            }
+                        }
                     } catch (SQLException e) {
-                        e.printStackTrace();
+                        throw new RuntimeException(e);
+                    }
+
+                    if(unique == 0){
+                        DataInsertionHelper.inserirDados(nome, paswd1);
                     }
                 }
-                else{
-                    System.out.println("senhas não são iguais");
-                }*/
-                Intent i = new Intent(SignUp.this,MainPage.class);
-                startActivity(i);
             }
         });
 
