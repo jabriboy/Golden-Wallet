@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.senaicimatec.golden_wallet.Entities.Transacao;
 
 public class MainPage extends AppCompatActivity {
 
@@ -47,6 +49,8 @@ public class MainPage extends AppCompatActivity {
 
         btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);
 
+
+
         // ir para view de gasto
         btnSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +73,8 @@ public class MainPage extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainPage.this,AdicionarTransacao.class);
+                startActivity(i);
             }
         });
 

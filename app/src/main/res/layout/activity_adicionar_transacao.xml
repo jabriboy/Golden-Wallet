@@ -69,19 +69,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipRenda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Renda"
             tools:text="Renda" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipGasto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gasto" />
+            android:checkable="true"
+            android:text="Gasto"
+            tools:text="Gasto" />
     </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.chip.ChipGroup
@@ -93,11 +98,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipAddCategoria"
@@ -139,5 +139,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+    <Button
+        android:id="@+id/btnAdicionarTransacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Adicionar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup2"
+        tools:text="Adicionar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

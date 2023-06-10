@@ -3,8 +3,10 @@ package com.senaicimatec.golden_wallet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -13,11 +15,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.senaicimatec.golden_wallet.Entities.Transacao;
 import com.senaicimatec.golden_wallet.Entities.User;
 import com.senaicimatec.golden_wallet.db.DataInsertionHelper;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.Objects;
 
 
@@ -25,7 +27,7 @@ public class SignUp extends AppCompatActivity {
 
     DataInsertionHelper di = new DataInsertionHelper();
 
-    ArrayList<User> ids = new ArrayList<User>();
+    public static ArrayList<User> ids = new ArrayList<User>();
     private EditText editNome;
     private EditText editPassword1;
     private EditText editPassword2;
@@ -47,26 +49,36 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String nome = editNome.getText().toString();
+                String username = editNome.getText().toString();
                 String paswd1 = editPassword1.getText().toString();
                 String paswd2 = editPassword2.getText().toString();
-
-                int last_id = ids.get(-1).getId();
-
-                di.inserirUsuario(new User(last_id + 1, nome, paswd1));
-
+                int i = 0;
+                if(paswd1.equals(paswd2)){
+                    for(User u: ids){
+                        if (u.getUsername().equals(username)) {
+                            i = 1;
+                            break;
+                        }
+                    }
+                    if(i == 0){
+                        di.inserirUsuario(new User(username, paswd1, "0.0"));
+                        Intent intent = new Intent(SignUp.this,MainPage.class);
+                        startActivity(intent);
+                    }
+                }
             }
         });
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int id = 0;
+                ids.clear();
                 for (DataSnapshot current_user : snapshot.child("Usuarios").getChildren()) {
-                    id = Integer.parseInt(Objects.requireNonNull(current_user.getKey()));
-                    String username = Objects.requireNonNull(current_user.child(current_user.getKey()).child("username").getValue()).toString();
-                    String password = Objects.requireNonNull(current_user.child(current_user.getKey()).child("password").getValue()).toString();
-                    User u = new User(id, username, password);
+                    String username = current_user.child("username").getValue().toString();
+                    String password = current_user.child("password").getValue().toString();
+                    String saldo = (current_user.child("saldo").getValue().toString());
+                    User u = new User(username, password, saldo);
+
                     ids.add(u);
                 }
 
@@ -79,4 +91,5 @@ public class SignUp extends AppCompatActivity {
         });
 
     }
+
 }
