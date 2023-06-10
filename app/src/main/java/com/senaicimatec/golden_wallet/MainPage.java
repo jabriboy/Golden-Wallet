@@ -37,14 +37,12 @@ public class MainPage extends AppCompatActivity {
 
         progressBarSaldo = (ProgressBar) findViewById(R.id.progressBarSaldo);
         textSaldo1 = (TextView) findViewById(R.id.textSaldo1);
-        textSaldo2 = (TextView) findViewById(R.id.textSaldo2);
-        textSaldo3 = (TextView) findViewById(R.id.textSaldo3);
+
         btnSaldo = (Button) findViewById(R.id.btnSaldo);
 
         progressBarGasto = (ProgressBar) findViewById(R.id.progressBarGasto);
         textGasto1 = (TextView) findViewById(R.id.textGasto1);
-        textGasto2 = (TextView) findViewById(R.id.textGasto2);
-        textGasto3 = (TextView) findViewById(R.id.textGasto3);
+
         btnGasto = (Button) findViewById(R.id.btnGasto);
 
         btnAdd = (FloatingActionButton) findViewById(R.id.btnAdd);

@@ -12,16 +12,12 @@ public class Gasto extends AppCompatActivity {
 
     private TextView textTodasCategorias;
     private TextView gasto1;
-    private TextView gasto2;
-    private TextView gasto3;
-    private TextView gasto4;
+
     private ProgressBar progressBarGastoTotal;
 
     private TextView textCategoriaEscolhida;
     private TextView gastoEspecifica1;
-    private TextView gastoEspecifica2;
-    private TextView gastoEspecifica3;
-    private TextView gastoEspecifica4;
+
     private ProgressBar progressBarGastoEspecifica;
 
     private ChipGroup chipGroupCategorias;
