@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText editUsername;
     private EditText editPassword;
 
+    public static String user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 for(User u: SignUp.ids){
                     if(u.getUsername().equals(username)){
                         if(u.getPassword().equals(password)){
+                            user = username;
                             Intent i = new Intent(MainActivity.this,MainPage.class);
                             startActivity(i);
                         }

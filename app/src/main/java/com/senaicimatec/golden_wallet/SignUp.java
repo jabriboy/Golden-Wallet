@@ -33,6 +33,8 @@ public class SignUp extends AppCompatActivity {
     private EditText editPassword2;
     private Button btnSubmit;
 
+    public static String user = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,7 @@ public class SignUp extends AppCompatActivity {
                     }
                     if(i == 0){
                         di.inserirUsuario(new User(username, paswd1, "0.0"));
+                        user = username;
                         Intent intent = new Intent(SignUp.this,MainPage.class);
                         startActivity(intent);
                     }
@@ -72,6 +75,7 @@ public class SignUp extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println("Called onDataChange");
                 ids.clear();
                 for (DataSnapshot current_user : snapshot.child("Usuarios").getChildren()) {
                     String username = current_user.child("username").getValue().toString();
@@ -80,6 +84,7 @@ public class SignUp extends AppCompatActivity {
                     User u = new User(username, password, saldo);
 
                     ids.add(u);
+                    System.out.println("size user: "+ ids.size());
                 }
 
             }

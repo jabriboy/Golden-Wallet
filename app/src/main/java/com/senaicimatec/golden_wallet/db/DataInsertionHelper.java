@@ -2,6 +2,7 @@ package com.senaicimatec.golden_wallet.db;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.senaicimatec.golden_wallet.AdicionarCategoria;
 import com.senaicimatec.golden_wallet.Entities.Categoria;
 import com.senaicimatec.golden_wallet.Entities.Transacao;
 import com.senaicimatec.golden_wallet.Entities.User;
@@ -24,7 +25,15 @@ public class DataInsertionHelper {
 
     }
 
-    public void inserirCategoria(Categoria categoria){
-
+    public void inserirCategoria(Categoria categoria, String idUser){
+        String id;
+        if(AdicionarCategoria.categorias.isEmpty()){
+            id = "1";
+        }
+        else{
+            id = String.valueOf(AdicionarCategoria.categorias.size() + 1);
+        }
+        System.out.println("id: " + id);
+        reference.child("Usuarios").child(idUser).child("Categorias").child(id).setValue(categoria);
     }
 }
